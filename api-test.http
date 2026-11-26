@@ -1,0 +1,38 @@
+@base = http://127.0.0.1:8000/api
+
+### Daftar karyawan (halaman 1)
+GET {{base}}/karyawan
+Accept: application/json
+
+### Pencarian
+GET {{base}}/karyawan?cari=a
+Accept: application/json
+
+### Tambah karyawan
+POST {{base}}/karyawan
+Accept: application/json
+Content-Type: application/json
+
+{ "kode": "KRY-9001", "nama": "Contoh Karyawan", "jabatan": "Analis", "divisi_id": 1 }
+
+### Tambah dengan data SALAH (harus 422)
+POST {{base}}/karyawan
+Accept: application/json
+Content-Type: application/json
+
+{ "nama": "" }
+
+### Ubah karyawan
+PUT {{base}}/karyawan/1
+Accept: application/json
+Content-Type: application/json
+
+{ "kode": "KRY-9002", "nama": "Nama Baru", "jabatan": "Staf", "divisi_id": 2 }
+
+### Hapus karyawan
+DELETE {{base}}/karyawan/1
+Accept: application/json
+
+### Divisi dan jumlah karyawan
+GET {{base}}/divisi
+Accept: application/json
