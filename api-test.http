@@ -1,11 +1,15 @@
 @base = http://127.0.0.1:8000/api
 
-### Daftar karyawan (halaman 1)
+### Daftar karyawan (halaman 1)  -> catat id yang ada
 GET {{base}}/karyawan
 Accept: application/json
 
 ### Pencarian
 GET {{base}}/karyawan?cari=a
+Accept: application/json
+
+### Lihat satu karyawan (ganti id)
+GET {{base}}/karyawan/1
 Accept: application/json
 
 ### Tambah karyawan
@@ -22,14 +26,21 @@ Content-Type: application/json
 
 { "nama": "" }
 
-### Ubah karyawan
+### Ubah karyawan (ganti id; ini mengubah data!)
 PUT {{base}}/karyawan/1
 Accept: application/json
 Content-Type: application/json
 
 { "kode": "KRY-9002", "nama": "Nama Baru", "jabatan": "Staf", "divisi_id": 2 }
 
-### Hapus karyawan
+### Tes edit TANPA mengubah kode (ganti id dan kode sesuai data aslinya)
+PUT {{base}}/karyawan/1
+Accept: application/json
+Content-Type: application/json
+
+{ "kode": "KRY-000", "nama": "Sophina Shafa Salsabila", "jabatan": "Analis", "divisi_id": 2 }
+
+### Hapus karyawan (ganti id; ini MENGHAPUS data!)
 DELETE {{base}}/karyawan/1
 Accept: application/json
 
